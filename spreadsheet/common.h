@@ -29,8 +29,9 @@ struct Position {
 struct Size {
     int rows = 0;
     int cols = 0;
-
+    
     bool operator==(Size rhs) const;
+    bool operator<(Size rhs) const;
 };
 
 // Описывает ошибки, которые могут возникнуть при вычислении формулы.
@@ -43,11 +44,8 @@ public:
     };
 
     FormulaError(Category category);
-
     Category GetCategory() const;
-
     bool operator==(FormulaError rhs) const;
-
     std::string_view ToString() const;
 
 private:
